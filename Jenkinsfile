@@ -1,7 +1,7 @@
 node {
-    docker.image('node:16-buster-slim').withRun('-p 3000:3000') {
+    docker.image('node:10.11.0-alpine').withRun('-p 3000:3000') {
         stage('Build') {
-            sh '/usr/bin/npm install'
+            sh 'npm install'
         }
 
         stage('Test') {

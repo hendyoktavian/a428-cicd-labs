@@ -1,9 +1,9 @@
 node {
-    docker.image('node:lts-buster-slim').withRun('-p 3000:3000') {
+    docker.image('node:10.11.0-alpine').withRun('-p 3000:3000') {
         env.CI = 'true'
 
         stage('Build') {
-            sh sh '/usr/bin/npm install'
+            sh 'npm install'
         }
 
         stage('Test') {
