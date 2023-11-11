@@ -3,7 +3,7 @@ node {
         env.CI = 'true'
 
         stage('Build') {
-            sh 'npm install'
+            sh sh '/usr/bin/npm install'
         }
 
         stage('Test') {
