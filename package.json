@@ -16,5 +16,6 @@
   "description": "This repository is for the\r [Build a Node.js and React app with npm](https://jenkins.io/doc/tutorials/build-a-node-js-and-react-app-with-npm/)\r tutorial in the [Jenkins User Documentation](https://jenkins.io/doc/).",
   "main": "index.js",
   "author": "Hendy Oktavian",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }
