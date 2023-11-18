@@ -1,21 +1,12 @@
 node {
-    docker.image('node:lts-buster-slim').withRun('-p 3000:3000') {
-        env.CI = 'true'
-
+    docker.image('node:16-buster-slim').withRun('-p 3000:3000') {
         stage('Build') {
+            sh 'apt-get update && apt-get install -y npm'
             sh 'npm install'
         }
 
         stage('Test') {
             sh './jenkins/scripts/test.sh'
-        }
-
-        stage('Deliver') {
-            sh './jenkins/scripts/deliver.sh'
-
-            input message: 'Finished using the website? (Click "Proceed" to continue)'
-
-            sh './jenkins/scripts/kill.sh'
         }
     }
 }
