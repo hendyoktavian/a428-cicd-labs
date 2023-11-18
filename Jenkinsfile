@@ -7,5 +7,16 @@ node {
         stage('Test') {
             sh './jenkins/scripts/test.sh'
         }
+
+        stage('Manual Approval') {
+            input message: 'Lanjutkan ke tahap Deploy?', ok: 'Proceed', submitter: 'user'
+        }
+
+        stage('Deploy') {
+            sh './jenkins/scripts/deliver.sh'
+            input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)'
+            sleep time: 60
+            sh './jenkins/scripts/kill.sh'
+        }
     }
 }
