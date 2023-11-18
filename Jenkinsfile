@@ -3,12 +3,11 @@ node {
     docker.image('node:16-buster-slim').withRun('-p 3000:3000') {
         // Stage Build
         stage('Build') {
-            // Memberikan izin yang diperlukan menggunakan sudo
-            sh 'sudo chmod 777 /var/lib/apt/lists'
-            sh 'sudo chmod 777 /var/lib/apt/lists/*'
+            // Memberikan izin yang diperlukan langsung sebagai root
+            sh 'chown -R root:root /var/lib/apt/lists'
             
             // Update dan install npm
-            sh 'sudo apt-get update && sudo apt-get install -y npm'
+            sh 'apt-get update && apt-get install -y npm'
             sh 'npm install'
         }
 
